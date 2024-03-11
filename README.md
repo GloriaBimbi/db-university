@@ -23,6 +23,13 @@ Dopo aver creato un nuovo database nel vostro phpMyAdmin e aver importato lo sch
 ```
 
 3. Selezionare tutti gli studenti che hanno più di 30 anni
+
+```sql
+    SELECT *
+    FROM `students`
+    WHERE YEAR(`date_of_birth`) > 1994;
+```
+
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
    laurea (286)
 5. Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio (dopo le 14) del
