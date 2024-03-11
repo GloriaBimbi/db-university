@@ -49,10 +49,12 @@ Dopo aver creato un nuovo database nel vostro phpMyAdmin e aver importato lo sch
    ```
 
 6. Selezionare tutti i corsi di laurea magistrale (38)
-<!--
+
    ```sql
-    SELECT * FROM `courses` WHERE `degree_id` = 2;
-   ``` -->
+    SELECT *
+    FROM `degrees`
+    WHERE `level` = 'magistrale';
+   ```
 
 7. Da quanti dipartimenti è composta l'università? (12)
 
