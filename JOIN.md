@@ -70,7 +70,21 @@
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
 ```sql
+    SELECT
+        `degrees`.`name` AS `degree`,
+        `courses`.`name` AS `course`,
+        `teachers`.`name` AS `teachers_name`,
+        `teachers`.`surname` AS `teachers_surname`
+    FROM `degrees`
 
+    INNER JOIN `courses`
+    ON `degrees`.`id` = `courses`.`degree_id`
+
+    INNER JOIN `course_teacher`
+    ON `course_teacher`.`course_id` = `courses`.`id`
+
+    INNER JOIN `teachers`
+    ON `course_teacher`.`teacher_id` = `teachers`.`id`;
 ```
 
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di
