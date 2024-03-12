@@ -51,7 +51,20 @@
    nome
 
 ```sql
+    SELECT
+        `students`.`name`,
+        `students`.`surname`,
+        `degrees`.`name` AS `degree`,
+        `departments`.`name` AS `department`
+    FROM `students`
 
+    INNER JOIN `degrees`
+    ON `students`.`degree_id` = `degrees`.`id`
+
+    INNER JOIN `departments`
+    ON `departments`.`id` = `degrees`.`department_id`
+
+    ORDER BY `students`.`surname` ASC;
 ```
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
