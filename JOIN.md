@@ -91,7 +91,25 @@
    Matematica (54)
 
 ```sql
+    SELECT
+        `teachers`.`name` AS `teachers_name`,
+        `teachers`.`surname` AS `teachers_surname`,
+        `departments`.`name` AS `department`
+    FROM `teachers`
 
+    INNER JOIN `course_teacher`
+    ON `teachers`.`id` = `course_teacher`.`teacher_id`
+
+    INNER JOIN `courses`
+    ON `courses`.`id` = `course_teacher`.`course_id`
+
+    INNER JOIN `degrees`
+    ON `courses`.`degree_id` = `degrees`.`id`
+
+    INNER JOIN `departments`
+    ON `departments`.`id` = `degrees`.`department_id`
+
+    WHERE `departments`.`name` = 'Dipartimento di Matematica';
 ```
 
 7. BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
