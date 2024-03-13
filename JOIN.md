@@ -41,9 +41,7 @@
     INNER JOIN `course_teacher`
     ON `teachers`.`id` = `course_teacher`.`teacher_id`
 
-    INNER JOIN `courses`
-    ON `course_teacher`.`course_id` = `courses`.`id`
-    WHERE `teachers`.`id` = 44;
+    WHERE `course_teacher`.`teacher_id` = 44;
 ```
 
 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
@@ -64,7 +62,7 @@
     INNER JOIN `departments`
     ON `departments`.`id` = `degrees`.`department_id`
 
-    ORDER BY `students`.`surname` ASC;
+    ORDER BY `students`.`name` ASC, `students`.`surname` ASC;
 ```
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
@@ -117,5 +115,24 @@
    filtrare i tentativi con voto minimo 18.
 
 ```sql
+    SELECT
+        `students`.`name` AS `student_name`,
+        `students`.`surname` AS `student_surname`,
+        `exams`.`course_id` AS `exam_id`,
+        COUNT(*) AS `tries`,
+        MAX(`exam_student`.`vote`) AS `max_vote`
+    FROM `students`
 
+    INNER JOIN `exam_student`
+    ON `exam_student`.`student_id` = `students`.`id`
+
+    INNER JOIN `exams`
+    ON `exams`.`id` = `exam_student`.`exam_id`
+
+    INNER JOIN `courses`
+    ON `courses`.`id` = `exams`.`course_id`
+
+    GROUP BY `exam_student`.`student_id`, `courses`.`id`
+
+    HAVING `max_vote` > 18;
 ```
