@@ -118,7 +118,7 @@
     SELECT
         `students`.`name` AS `student_name`,
         `students`.`surname` AS `student_surname`,
-        `exams`.`course_id` AS `exam_id`,
+        `courses`.`name` AS `exam_name`,
         COUNT(*) AS `tries`,
         MAX(`exam_student`.`vote`) AS `max_vote`
     FROM `students`
